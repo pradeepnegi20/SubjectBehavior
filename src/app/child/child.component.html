@@ -1,0 +1,85 @@
+
+<body [ngClass]="darkClass">
+<div class="container-fluid " style="height: 100%;">
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid"  [ngStyle]="cartclass" style="height: 80px;">
+      <span class="navbar-brand mb-0 h1">Child Component</span>
+
+      <button type="button" class="bi bi-cart-plus-fill">
+
+        <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          {{cart}}
+          <span class="visually-hidden">unread messages</span>
+        </span>
+      </button>
+    </div>
+  </nav>
+  <p>
+  <div>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" [disabled]="show">
+      Add 
+    </button>
+
+
+
+
+    <!-- <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+      aria-expanded="false" aria-controls="collapseExample" >
+      Add Item
+    </button>
+    <div class="collapse" id="collapseExample">
+      <div class="card ">
+
+        <input type="text" #da placeholder="Enter the Value">
+        <button class="btn btn-primary" (click)="GetValue.emit(da.value)" [disabled]="show">Submit</button>
+      </div>
+    </div> -->
+
+    <ul class="list-group" style="width: 50%; margin-top: 50px;">
+
+      <li class="list-group-item list-group-item-dark" [ngClass]="darkClass"  *ngFor="let i of data ; let p = index">{{i}} </li>
+    </ul>
+
+
+  </div>
+
+
+  <div class="d-flex flex-row mb-3">
+    <div class="p-2"> <button style="margin-left: 10px; margin-top: 10px;" class="btn btn-danger" (click)="Remove.emit(true)">Delete First
+    </button></div>
+    <div class="p-2"> <button style="margin-left: 10px; margin-top: 10px;" class="btn btn-danger" (click)="Last.emit(true)">Delete Last
+    </button></div>
+    <div class="p-2"> <button style="margin-left: 10px; margin-top: 10px;" class="btn btn-danger" (click)="addCart()" >Add Cart
+    </button></div>
+    <div class="p-2"> <button style="margin-left: 10px; margin-top: 10px;" class="btn btn-danger" (click)="removeCart()" [disabled]="btn">Remove Cart
+    </button></div>
+  </div>
+  
+  
+
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Fields</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" >
+        <input type="text" #da placeholder="Enter the Value">
+        <!-- <button class="btn btn-primary" (click)="GetValue.emit(da.value)" [disabled]="show">Submit</button> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button"  id ="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="GetValue.emit(da.value)" [disabled]="show">Save </button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
